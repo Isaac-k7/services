@@ -1,11 +1,10 @@
-import 'package:achilleservice/screens/home/home.dart';
+import 'package:achilleservice/screens/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'config/theme/theme.dart';
-import 'screens/home/cubit/config_cubit.dart';
+import 'screens/welcome/cubit/config_cubit.dart';
 
 void main() {
-  Bloc.observer = ThemeBlocObserver();
   runApp(const ServiceApp());
 }
 
@@ -23,7 +22,15 @@ class ServiceApp extends StatelessWidget {
           create: (context) => ConfigCubit(),
         ),
       ],
-      child: const HomePage(),
+      child: BlocBuilder<ThemeCubit, ThemeData>(
+        builder: ((context, theme) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: theme,
+            home: const HomePage(),
+          );
+        }),
+      ),
     );
   }
 }
