@@ -4,14 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:achilleservice/config/constants.dart';
 import 'package:achilleservice/config/theme/theme.dart';
-
+import 'package:achilleservice/utils/utils.dart';
 import 'cubit/config_cubit.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class Welcome extends StatelessWidget {
+  const Welcome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var  controller = RouteController();
     return BlocBuilder<ThemeCubit, ThemeData>(
       builder: (context, theme) {
         return Scaffold(
@@ -72,7 +73,7 @@ class HomePage extends StatelessWidget {
                                 fontWeight: FontWeight.w700,
                                 color: Colors.black),
                           ),
-                          onPressed: () {},
+                          onPressed: (){controller.register(context);},
                         ),
                         TextButton(
                           onPressed: () {},

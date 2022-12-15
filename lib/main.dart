@@ -1,8 +1,11 @@
-import 'package:achilleservice/screens/welcome/welcome.dart';
+import 'package:achilleservice/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'config/theme/theme.dart';
 import 'screens/welcome/cubit/config_cubit.dart';
+import 'package:achilleservice/utils/utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 void main() {
   runApp(const ServiceApp());
@@ -13,6 +16,7 @@ class ServiceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyRouter router = MyRouter();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -25,9 +29,15 @@ class ServiceApp extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ThemeData>(
         builder: ((context, theme) {
           return MaterialApp(
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            // locale: state.locale,
+            // themeMode: state.themeMode,
+            onGenerateRoute: router.getRoute,
+            initialRoute: '/',
             debugShowCheckedModeBanner: false,
             theme: theme,
-            home: const HomePage(),
+            home: const Welcome(),
           );
         }),
       ),

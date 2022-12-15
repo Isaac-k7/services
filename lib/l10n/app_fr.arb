@@ -1,3 +1,6 @@
 {
-    "helloWorld": "Bonjour le monde!"
+    "helloWorld": "Bonjour le monde!",
+    "createAnAccount": "Créer un compt",
+    "register": "S'inscrire",
+    "login": "Se connecter"
 }
