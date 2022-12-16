@@ -9,26 +9,34 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations? t = AppLocalizations.of(context);
-    return Column(
-      children: [
-        const SizedBox(height: 100),
-        Center(
-          child: Text(
-            t!.createAnAccount,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-              // fontFamily: 'Rubik',
+    return SafeArea(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                t!.createAnAccount,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  // fontFamily: 'Rubik',
+                ),
+              ),
             ),
           ),
-        ),
-        const SizedBox(height: 100,),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: FormRegister(),
-        ),
-      ],
+           const Expanded(
+            flex: 4,
+            child:  Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: FormRegister(),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -82,7 +82,7 @@ class AppTheme {
         ),
       ),
     ),
-    textTheme: buildTextTheme(const Color.fromARGB(255, 255, 255, 255)),
+    // textTheme: buildTextTheme(const Color.fromARGB(255, 255, 255, 255)),
 
       );
   static final darkTheme = ThemeData.light().copyWith(

@@ -5,5 +5,30 @@
     },
     "createAnAccount": "Create  an account",
     "register": "Register",
-    "login": "Login"
+    "login": "Login",
+
+    "notEmptyMessage": "{name} must not be empty",
+    "@notEmptyMessage": {
+      "placeholders": {
+        "name": {
+          "type": "String",
+          "example": "Email"
+        }
+      }
+    },
+    "phone":"Phone",
+    "invalidEmailMessage": "{name} is not a valid email address",
+    "@invalidEmailMessage": {
+      "placeholders": {
+        "name": {
+          "type": "String"
+        }
+      }
+    },
+    "next": "Next",
+    "back": "Back",
+    "confirm": "Confirm",
+    "userName": "Profile Name",
+    "firstName": "Fist name",
+    "lastName": "Last Name"
 }

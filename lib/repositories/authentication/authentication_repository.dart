@@ -109,7 +109,6 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
       },
       body: {
         'username': phone.trim(),
- 
         'first_name': firstName.trim(),
         'last_name': lastName.trim(),
         'role_slug': 'student'

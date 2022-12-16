@@ -2,5 +2,15 @@
     "helloWorld": "Bonjour le monde!",
     "createAnAccount": "Créer un compt",
     "register": "S'inscrire",
-    "login": "Se connecter"
+    "login": "Se connecter",
+    "notEmptyMessage": "{name} ne doit pas être vide",
+    "phone":"Téléphone",
+    "invalidEmailMessage": "{name} n'est pas une adresse email valide",
+    "next": "Suivant",
+    "back": "Retour",
+    "userName": "Nom de profil",
+    "firstName": "Prénoms",
+    "lastName": "Nom"
+
+
 }

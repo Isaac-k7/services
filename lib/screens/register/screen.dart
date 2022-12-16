@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../register/cubit/register_cubit.dart';
 import 'widgets/body.dart';
 
 class Register extends StatelessWidget {
@@ -7,8 +9,11 @@ class Register extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   const Scaffold(
-      body: Body(),
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) => RegisterCubit(),
+        child: const Body(),
+      ),
     );
   }
 }
