@@ -18,8 +18,9 @@ abstract class BaseAuthenticationRepository {
   Future<User?> getUser();
   Future<void> logOut();
   Future<String?> register(
-    String firstName,
-    String lastName,
-    String phone,
+    {required String firstName,
+    required String lastName,
+    required String password,
+    required String phone,}
   );
 }

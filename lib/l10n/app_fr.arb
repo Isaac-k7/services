@@ -10,7 +10,8 @@
     "back": "Retour",
     "userName": "Nom de profil",
     "firstName": "Prénoms",
-    "lastName": "Nom"
+    "lastName": "Nom",
+    "password": "Mot de passe"
 
 
 }

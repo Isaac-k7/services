@@ -21,4 +21,9 @@ class RegisterCubit extends Cubit<RegisterState> {
       state.copyWith(lastName: value, status: RegisterStatus.initial),
     );
   }
+  void changePassword(String value) {
+    return emit(
+      state.copyWith(password: value, status: RegisterStatus.initial),
+    );
+  }
 }

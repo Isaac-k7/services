@@ -6,12 +6,14 @@ class RegisterState extends Equatable {
   final String phone;
   final String firstName;
   final String lastName;
+  final String password;
   final RegisterStatus status;
 
   const RegisterState({
     required this.phone,
     required this.firstName,
     required this.lastName,
+    required this.password,
     required this.status,
   });
 
@@ -20,6 +22,7 @@ class RegisterState extends Equatable {
       phone: '',
       firstName: '',
       lastName: '',
+      password: '',
       status: RegisterStatus.initial,
     );
   }
@@ -28,15 +31,17 @@ class RegisterState extends Equatable {
     String? phone,
     String? firstName,
     String? lastName,
+    String? password,
     RegisterStatus? status,
   }) {
     return RegisterState(
         phone: phone ?? this.phone,
         firstName: firstName ?? this.firstName,
         lastName: lastName ?? this.lastName,
+        password: password ?? this.password,
         status: status ?? this.status);
   }
 
   @override
-  List<Object> get props => [phone, firstName, lastName];
+  List<Object> get props => [phone, firstName, lastName,password];
 }

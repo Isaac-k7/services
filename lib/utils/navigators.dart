@@ -5,4 +5,7 @@ class RouteController {
   void register(context) {
     Navigator.of(context).pushNamed('/register');
   }
+  void login(context) {
+    Navigator.of(context).pushNamed('/login');
+  }
 }

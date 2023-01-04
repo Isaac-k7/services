@@ -10,6 +10,8 @@ class MyRouter{
     switch (settings.name){
       case Screens.register:
         return _buildRoute(settings, const Register());
+      case Screens.login:
+        return _buildRoute(settings, const Login());
       default:
     return null;
     }

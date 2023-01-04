@@ -62,7 +62,7 @@ class Welcome extends StatelessWidget {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   color: Colors.white)),
-                          onPressed: () {},
+                          onPressed: (){controller.login(context);},
                         ),
                         const SizedBox(height: 15),
                         CustomOutlinedButton(

@@ -90,14 +90,17 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
 
   @override
   Future<String?> register(
-    String firstName,
-    String lastName,
-    String phone,
+    {required String firstName,
+    required String lastName,
+    required String phone,
+    required String password,}
   ) async {
 
     String errorFirstName = '';
     String errorLastName = '';
     String errorPhone = '';
+    String errorPassword = '';
+    String errorEmail= '';
     String errorRole = '';
     provider = AuthenticationProvider.service;
     final response = await Api.post(
@@ -108,9 +111,10 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
         'Content-Type': 'application/json; charset=UTF-8'
       },
       body: {
-        'username': phone.trim(),
+        'phone': phone.trim(),
         'first_name': firstName.trim(),
         'last_name': lastName.trim(),
+        'password': password.trim(),
         'role_slug': 'student'
       },
     );
@@ -137,10 +141,20 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
               errorLastName = failure.errors![field][0]['description'];
               return '${failure.message}: $errorLastName';
             }
-          case 'gender':
+          case 'phone':
             {
               errorPhone = failure.errors![field][0]['description'];
               return '${failure.message}: $errorPhone';
+            }
+          case 'email':
+            {
+              errorEmail = failure.errors![field][0]['description'];
+              return '${failure.message}: $errorEmail';
+            }
+          case 'password':
+            {
+              errorPassword = failure.errors![field][0]['description'];
+              return '${failure.message}: $errorPassword';
             }
           case 'role_slug':
             {
@@ -156,5 +170,4 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
     }
     return failure.message;
   }
-
 }

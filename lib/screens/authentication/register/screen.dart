@@ -1,3 +1,4 @@
+import 'package:achilleservice/cubits/cubit/show_password_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,8 +11,15 @@ class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => RegisterCubit(),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => RegisterCubit(),
+          ),
+          BlocProvider(
+            create: (context) => ShowPasswordCubit(),
+          ),
+        ],
         child: const Body(),
       ),
     );

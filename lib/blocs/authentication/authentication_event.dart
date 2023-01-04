@@ -25,5 +25,8 @@ class  AuthenticationEventRegister extends AuthenticationEvent{
   final String phone;
   final String firstName;
   final String lastName;
-  const AuthenticationEventRegister({required this.phone, required this.firstName, required this.lastName});
+  final String password;
+  const AuthenticationEventRegister({required this.phone, required this.firstName, required this.lastName, required this.password});
+  @override
+  List<Object> get props => [phone, firstName,lastName, password];
 }

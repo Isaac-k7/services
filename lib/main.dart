@@ -1,3 +1,6 @@
+import 'package:achilleservice/blocs/bloc.dart';
+import 'package:achilleservice/oberver.dart';
+import 'package:achilleservice/repositories/repositories.dart';
 import 'package:achilleservice/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,8 +14,11 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  Bloc.observer = MyBlocObserver();
+
   runApp(const ServiceApp());
 }
 
@@ -22,29 +28,44 @@ class ServiceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyRouter router = MyRouter();
-    return MultiBlocProvider(
+    return MultiRepositoryProvider(
       providers: [
-        BlocProvider(
-          create: (context) => ThemeCubit(),
-        ),
-        BlocProvider(
-          create: (context) => ConfigCubit(),
+       
+        RepositoryProvider<BaseAuthenticationRepository>(
+          create: (context) => AuthenticationRepository(),
         ),
       ],
-      child: BlocBuilder<ThemeCubit, ThemeData>(
-        builder: ((context, theme) {
-          return MaterialApp(
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            // locale: state.locale,
-            // themeMode: state.themeMode,
-            onGenerateRoute: router.getRoute,
-            initialRoute: '/',
-            debugShowCheckedModeBanner: false,
-            theme: theme,
-            home: const Welcome(),
-          );
-        }),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => ThemeCubit(),
+          ),
+          BlocProvider(
+            create: (context) => ConfigCubit(),
+          ),
+          BlocProvider(
+            create: (context) => AuthenticationBloc(
+              context.read<BaseAuthenticationRepository>(),
+            )..add(
+                AuthenticationEventAppStarted(),
+              ),
+          ),
+        ],
+        child: BlocBuilder<ThemeCubit, ThemeData>(
+          builder: ((context, theme) {
+            return MaterialApp(
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              // locale: state.locale,
+              // themeMode: state.themeMode,
+              onGenerateRoute: router.getRoute,
+              initialRoute: '/',
+              debugShowCheckedModeBanner: false,
+              theme: theme,
+              home: const Welcome(),
+            );
+          }),
+        ),
       ),
     );
   }

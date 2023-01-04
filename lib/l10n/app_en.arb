@@ -30,5 +30,6 @@
     "confirm": "Confirm",
     "userName": "Profile Name",
     "firstName": "Fist name",
-    "lastName": "Last Name"
+    "lastName": "Last Name",
+    "password": "Password"
 }
