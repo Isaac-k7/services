@@ -12,7 +12,8 @@ abstract class BaseAuthenticationRepository {
   AuthenticationProvider? provider;
 
   Future<String?> logIn(
-    String phone,
+    String userName,
+    String password,
   );
   Future<bool> isSignedIn();
   Future<User?> getUser();

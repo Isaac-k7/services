@@ -16,18 +16,20 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
 
   @override
   Future<String?> logIn(
-    String phone,
+    String userName,
+    String password,
   ) async {
     provider = AuthenticationProvider.service;
     final response = await Api.post(
-      'oauth/login',
+      'token/',
       body: {
-        'phone': phone.trim(),
+        'username': userName.trim(),
+        'password': password.trim(),
       },
     );
     if (response.statusCode == HttpStatus.ok) {
       ApiSuccess success = ApiSuccess(response);
-      await _storeTokenInfo(success.data['access_token']);
+      await _storeTokenInfo(success.data['token']);
       if (_token != null) {
         return null;
       }
@@ -44,7 +46,7 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
         ? AuthenticationProvider.values[int.parse(storedProvider)]
         : null;
     if (_token == null) return false;
-    Api.addHeader('Authorization', 'Bearer $_token');
+    Api.addHeader('Authorization', 'Token $_token');
 
     if (await getUser() is User) {
       return true;
@@ -55,11 +57,11 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
   @override
   Future<User?> getUser() async {
     if (_token != null && _token != '') {
-      final response = await Api.get('account/user');
+      final response = await Api.get('user/');
       if (response.statusCode == HttpStatus.ok) {
         ApiSuccess success = ApiSuccess(response);
       
-        return User.fromMap(success.data);
+        return User.fromMap(success.data['results'][0]);
       }
       await logOut();
     }
@@ -77,7 +79,7 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
       if (provider != null) {
         await storage.write(key: 'provider', value: provider!.index.toString());
       }
-      Api.addHeader('Authorization', 'Bearer $_token');
+      Api.addHeader('Authorization', 'Token $_token');
     }
   }
 

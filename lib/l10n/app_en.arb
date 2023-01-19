@@ -31,5 +31,7 @@
     "userName": "Profile Name",
     "firstName": "Fist name",
     "lastName": "Last Name",
-    "password": "Password"
+    "password": "Password",
+    "userLogedInsuccessfully": "User logend succesfully"
+
 }

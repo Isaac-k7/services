@@ -1,5 +1,7 @@
 import 'dart:async';
-import 'package:flutter_config/flutter_config.dart';
+// import 'package:flutter_config/flutter_config.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -10,16 +12,14 @@ export 'api_success.dart';
 export 'api_response.dart';
 
 class Api {
+  
   static http.Client? _client;
-
   static final Uri _url = Uri.parse(
-    (FlutterConfig.get('API_URL') ?? '').replaceAll(RegExp(r'/$'), ''),
+    (dotenv.env['API_URL'] ?? '').replaceAll(RegExp(r'/$'), ''),
   );
 
   static final Map<String, dynamic> _headers = {
-    'content-type': 'application/json',
-    'x-requested-with': 'XMLHttpRequest',
-    'Accept-Language': 'en',
+    'Content-Type': 'application/json; charset=UTF-8'
   };
 
   static void initialize({http.Client? client}) {
@@ -56,6 +56,7 @@ class Api {
       Uri(
         scheme: _url.scheme,
         host: _url.host,
+        port: _url.port,
         path: '${_url.path}/$endpoint',
         queryParameters: queryParameters,
       ),
@@ -96,6 +97,7 @@ class Api {
       Uri(
         scheme: _url.scheme,
         host: _url.host,
+        port: _url.port,
         path: '${_url.path}/$endpoint',
       ),
       

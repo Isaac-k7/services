@@ -28,9 +28,15 @@ class Body extends StatelessWidget {
               ),
             ),
           ),
-           const Expanded(
-            flex: 4,
-            child:  Padding(
+          const Expanded(
+            flex: 3,
+            child: SizedBox(
+            ),
+          ),
+          
+          const Expanded(
+            flex: 3,
+            child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: FormRegister(),
             ),

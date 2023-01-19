@@ -5,7 +5,8 @@ class MyBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
-    if(bloc is Bloc)print(change.toString());
+    // ignore: avoid_print
+    if(bloc is Bloc)print (change.toString());
   }
 
 

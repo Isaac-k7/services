@@ -9,7 +9,7 @@ class ApiSuccess<T> extends ApiResponse {
   ApiSuccess(http.Response response) : super(response.statusCode) {
     String body = response.body;
     var parsedJson = json.decode(body);
-    _data = parsedJson['data'];
+    _data = parsedJson;
   }
 
   T get data => _data;

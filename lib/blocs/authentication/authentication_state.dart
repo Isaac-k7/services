@@ -18,19 +18,7 @@ class AuthenticationStateAuthenticated extends AuthenticationState {
   List<Object> get props => [user];
 }
 
-class AuthenticationStateLoading extends AuthenticationState {
-  final AuthenticationProvider? provider;
-
-  const AuthenticationStateLoading({this.provider});
-
-  @override
-  List<Object> get props => [provider?.toString() ?? ''];
-
-  @override
-  String toString() => provider?.toString() ?? '';
-}
-
-class AuthenticationStateAuthencated extends AuthenticationState {}
+class AuthenticationStateLoading extends AuthenticationState {}
 
 class AuthenticationStateUnauthenticated extends AuthenticationState {
   final String? errorMessage;

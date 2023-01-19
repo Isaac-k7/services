@@ -11,12 +11,13 @@ abstract class AuthenticationEvent extends Equatable {
 
 class  AuthenticationEventAppStarted extends AuthenticationEvent{}
 class  AuthenticationEventLoggedIn extends AuthenticationEvent{
-  final String phone;
+  final String userName;
+  final String password;
 
-  const AuthenticationEventLoggedIn(this.phone);
+  const AuthenticationEventLoggedIn({required this.userName, required this.password });
 
   @override
-  List<Object> get props => [phone];
+  List<Object> get props => [userName];
 }
 class  AuthenticationEventLoggedOut extends AuthenticationEvent{}
 class  AuthenticationEventLoggedWithFacebook extends AuthenticationEvent{}

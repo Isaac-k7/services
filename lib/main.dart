@@ -2,8 +2,14 @@ import 'package:achilleservice/blocs/bloc.dart';
 import 'package:achilleservice/oberver.dart';
 import 'package:achilleservice/repositories/repositories.dart';
 import 'package:achilleservice/screens/screens.dart';
+import 'package:achilleservice/services/api/api.dart';
+import 'package:achilleservice/utils/timeago.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'config/theme/theme.dart';
 import 'screens/welcome/cubit/config_cubit.dart';
 import 'package:achilleservice/utils/utils.dart';
@@ -13,14 +19,35 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
+  await  initAppRequirements();
+  runApp(const ServiceApp());
+}
+
+Future<void> initAppRequirements() async {
+  await dotenv.load(fileName: "lib/env/.env");
+  await clearSecureStorageOnReinstall();
+  await initHive();
+  initTimeago();
+  Api.initialize();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  Bloc.observer = MyBlocObserver();
-
-  runApp(const ServiceApp());
 }
+
+Future<void> initHive() async {
+  await Hive.initFlutter();
+}
+
+Future<void> clearSecureStorageOnReinstall() async {
+  String key = 'hasRunBefore';
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  if (prefs.getBool(key) == null) {
+    FlutterSecureStorage storage = const FlutterSecureStorage();
+    await storage.deleteAll();
+    prefs.setBool(key, true);
+  }
+} 
 
 class ServiceApp extends StatelessWidget {
   const ServiceApp({Key? key}) : super(key: key);

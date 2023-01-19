@@ -11,7 +11,8 @@
     "userName": "Nom de profil",
     "firstName": "Prénoms",
     "lastName": "Nom",
-    "password": "Mot de passe"
+    "password": "Mot de passe",
+    "userLogedInsuccessfully": "Utilisateur authentifié"
 
 
 }

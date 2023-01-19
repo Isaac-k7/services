@@ -220,3 +220,28 @@ ThemeData lightThemeData(BuildContext context) {
     textTheme: buildTextTheme(const Color.fromARGB(255, 255, 255, 255)),
   );
 }
+
+void showGenericSnackbar(BuildContext context,
+    {String? title, required String message, double elevation = 0, required Color backgroundColor,}) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    shape: Border.all(width:0),
+    margin: const  EdgeInsets.symmetric(horizontal: 0),
+    // padding: const  EdgeInsets.symmetric(horizontal: 0),
+    elevation: elevation,
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: backgroundColor,
+    dismissDirection: DismissDirection.down,
+    content: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          message,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontSize: 16.0,
+          ),
+        ),
+      ],
+    ),
+  ),);
+}

@@ -25,13 +25,13 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
   _loggedIn(event, Emitter<AuthenticationState> emit)async{
     emit(
-      const AuthenticationStateLoading(
-        provider: AuthenticationProvider.service,
-      ),
+      AuthenticationStateLoading(),
     );
     try {
+
       final String? logInError = await _authenticationRepository.logIn(
-        event.phone,
+        event.userName,
+        event.password,
       );
       if (logInError == null) {
         final User? user = await _authenticationRepository.getUser();
@@ -42,11 +42,11 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       }
       emit(AuthenticationStateUnauthenticated(errorMessage: logInError));
     } catch (e) {
-      emit(const AuthenticationStateUnauthenticated());
+      emit(AuthenticationStateUnauthenticated(errorMessage: e.toString()));
     }
   }
   _loggedOut(even, Emitter<AuthenticationState> emit)async{
-        emit(const AuthenticationStateLoading());
+        emit( AuthenticationStateLoading());
     await _authenticationRepository.logOut();
     emit(const AuthenticationStateUnauthenticated());
   }
@@ -56,9 +56,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
   _regiser(event, Emitter<AuthenticationState> emit)async{
      emit(
-      const AuthenticationStateLoading(
-        provider: AuthenticationProvider.service,
-      ),
+       AuthenticationStateLoading(),
     );
 
     try {
@@ -79,7 +77,6 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       }
       emit(AuthenticationStateUnauthenticated(errorMessage: registerError));
     } catch (e) {
-      print(e);
       emit(const AuthenticationStateUnauthenticated());
     }
   }

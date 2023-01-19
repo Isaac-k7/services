@@ -7,19 +7,38 @@
         {
             "name": "achilleservice",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "env": {
+                "ENVFILE": "env/.env"
+            }
         },
         {
             "name": "achilleservice (profile mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "env": {
+                "ENVFILE": "env/.env"
+            }
         },
         {
             "name": "achilleservice (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
-        }
+            "flutterMode": "release",
+            "env": {
+                "ENVFILE": "env/.env"
+            }
+        },
+        {
+            "name": "Dev Env - Debug",
+            "flutterMode": "debug",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "env": {
+              "ENVFILE": "env/.env"
+            }
+          }
     ]
 }

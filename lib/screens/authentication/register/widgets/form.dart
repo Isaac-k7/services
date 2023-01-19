@@ -1,7 +1,6 @@
 import 'package:achilleservice/blocs/bloc.dart';
 import 'package:achilleservice/config/constants.dart';
 import 'package:achilleservice/cubits/cubit/show_password_cubit.dart';
-import 'package:achilleservice/repositories/repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:achilleservice/widgets/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -122,7 +121,7 @@ class FormRegister extends StatelessWidget {
                                   registerState.firstName == '' ||
                                   registerState.password == '' ||
                                   registerState.lastName == ''),
-                              loading: authState is AuthenticationStateLoading && authState.provider == AuthenticationProvider.service,
+                              loading: authState is AuthenticationStateLoading,
                               color: AppTheme.colorScheme.secondary,
                               backgroundColor: AppTheme.colorScheme.primary,
                               label: Text(t.register,
