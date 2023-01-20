@@ -32,6 +32,8 @@
     "firstName": "Fist name",
     "lastName": "Last Name",
     "password": "Password",
-    "userLogedInsuccessfully": "User logend succesfully"
+    "userLogedInsuccessfully": "User logend succesfully",
+    "settingsLogoutCTA": "Logout"
+
 
 }

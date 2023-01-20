@@ -102,8 +102,6 @@ class FormRegister extends StatelessWidget {
                                   //     (loginState.phone == '' || loginState.password == ''),
                                   loading:
                                       authState is AuthenticationStateLoading,
-                                  color: AppTheme.colorScheme.secondary,
-                                  backgroundColor: AppTheme.colorScheme.primary,
                                   label: Text(t.login,
                                       style: const TextStyle(
                                           fontWeight: FontWeight.w700,

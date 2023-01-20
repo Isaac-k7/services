@@ -2,14 +2,26 @@ import 'package:flutter/material.dart';
 
 import 'package:achilleservice/screens/screens.dart';
 
+const _homeTabKey = Key('homeTabs');
+
 class MyRouter{
   final RouteObserver<PageRoute> routeObserver;
   MyRouter() : routeObserver = RouteObserver<PageRoute>();
 
   Route<dynamic>?  getRoute(RouteSettings settings){
     switch (settings.name){
+      case Screens.favorites:
+      case Screens.settings:
+      case Screens.profile:
+      case Screens.notifications:
       case Screens.home:
-        return _buildRoute(settings, const Home());
+        return _buildRoute(
+          settings,
+          HomeBasePage(
+            key: _homeTabKey,
+            initialSettings: settings,
+          ),
+        );
       case Screens.register:
         return _buildRoute(settings, const Register());
       case Screens.login:

@@ -56,23 +56,12 @@ class Welcome extends StatelessWidget {
                         ),
                         const SizedBox(height: 30),
                         CustomElevatedButton(
-                          color: AppTheme.colorScheme.secondary,
-                          backgroundColor: AppTheme.colorScheme.primary,
-                          label: const Text("Login",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white)),
+                          label: const Text("Login"),
                           onPressed: (){controller.login(context);},
                         ),
                         const SizedBox(height: 15),
                         CustomOutlinedButton(
-                          color: Colors.black,
-                          label: const Text(
-                            "S'inscrire",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: Colors.black),
-                          ),
+                          label: const Text("S'inscrire"),
                           onPressed: (){controller.register(context);},
                         ),
                         TextButton(

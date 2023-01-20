@@ -13,7 +13,9 @@
     "firstName": "Prénoms",
     "lastName": "Nom",
     "password": "Mot de passe",
-    "userLogedInsuccessfully": "Utilisateur authentifié"
+    "userLogedInsuccessfully": "Utilisateur authentifié",
+    "settingsLogoutCTA": "Logout"
+
 
 
 }
