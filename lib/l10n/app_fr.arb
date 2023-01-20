@@ -8,6 +8,7 @@
     "invalidEmailMessage": "{name} n'est pas une adresse email valide",
     "next": "Suivant",
     "back": "Retour",
+    "confirm": "Valider",
     "userName": "Nom de profil",
     "firstName": "Prénoms",
     "lastName": "Nom",

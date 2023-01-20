@@ -21,7 +21,24 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     on<AuthenticationEventRegister>(_regiser);
   }
 
-  _appStarted(event, Emitter<AuthenticationState> emit){}
+  Future<void> _appStarted(
+    event,
+    Emitter<AuthenticationState> emit,
+  ) async {
+    try {
+      emit(AuthenticationStateLoading());
+      if (await _authenticationRepository.isSignedIn()) {
+        final User? user = await _authenticationRepository.getUser();
+        if (user is User) {
+          emit(AuthenticationStateAuthenticated(user));
+          return;
+        }
+      }
+      emit(const AuthenticationStateUnauthenticated());
+    } catch (_) {
+      emit(const AuthenticationStateUnauthenticated());
+    }
+  }
 
   _loggedIn(event, Emitter<AuthenticationState> emit)async{
     emit(

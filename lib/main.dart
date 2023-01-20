@@ -20,7 +20,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
-  await  initAppRequirements();
+  await initAppRequirements();
   runApp(const ServiceApp());
 }
 
@@ -47,7 +47,7 @@ Future<void> clearSecureStorageOnReinstall() async {
     await storage.deleteAll();
     prefs.setBool(key, true);
   }
-} 
+}
 
 class ServiceApp extends StatelessWidget {
   const ServiceApp({Key? key}) : super(key: key);
@@ -57,7 +57,6 @@ class ServiceApp extends StatelessWidget {
     final MyRouter router = MyRouter();
     return MultiRepositoryProvider(
       providers: [
-       
         RepositoryProvider<BaseAuthenticationRepository>(
           create: (context) => AuthenticationRepository(),
         ),
@@ -86,9 +85,24 @@ class ServiceApp extends StatelessWidget {
               // locale: state.locale,
               // themeMode: state.themeMode,
               onGenerateRoute: router.getRoute,
-              initialRoute: '/',
+              initialRoute: Screens.splash,
               debugShowCheckedModeBanner: false,
               theme: theme,
+              builder: (context, child) {
+                return BlocListener<AuthenticationBloc, AuthenticationState>(
+                  listenWhen: (previous, current) {
+                    if (previous is AuthenticationStateAuthenticated &&
+                        current is AuthenticationStateAuthenticated) {
+                      return false;
+                    }
+                    return true;
+                  },
+                  listener: (context, state) {
+
+                  },
+                  child: child,
+                );
+              },
               home: const Welcome(),
             );
           }),
