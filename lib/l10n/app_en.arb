@@ -25,6 +25,14 @@
         }
       }
     },
+    "invalidPhoneMessage": "{name} is not a phone number",
+    "@invalidPhoneMessage": {
+      "placeholders": {
+        "name": {
+          "type": "String"
+        }
+      }
+    },
     "next": "Next",
     "back": "Back",
     "confirm": "Confirm",
@@ -33,7 +41,10 @@
     "lastName": "Last Name",
     "password": "Password",
     "userLogedInsuccessfully": "User logend succesfully",
-    "settingsLogoutCTA": "Logout"
+    "settingsLogoutCTA": "Logout",
+    "email": "Email",
+    "lenghtNotMatch": "The number must be 10 digits"
+
 
 
 }

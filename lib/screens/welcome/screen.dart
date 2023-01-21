@@ -65,7 +65,7 @@ class Welcome extends StatelessWidget {
                           onPressed: (){controller.register(context);},
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {Navigator.pushNamed(context,'/home');},
                           child: const Text('Home'),
                         )
                       ],

@@ -6,6 +6,7 @@
     "notEmptyMessage": "{name} ne doit pas être vide",
     "phone":"Téléphone",
     "invalidEmailMessage": "{name} n'est pas une adresse email valide",
+    "invalidPhoneMessage": "{name} n'est pas un numéro de téléphone",
     "next": "Suivant",
     "back": "Retour",
     "confirm": "Valider",
@@ -14,7 +15,9 @@
     "lastName": "Nom",
     "password": "Mot de passe",
     "userLogedInsuccessfully": "Utilisateur authentifié",
-    "settingsLogoutCTA": "Logout"
+    "settingsLogoutCTA": "Logout",
+    "email": "Email",
+    "lenghtNotMatch": "Le numero doit être de 10 chiffres"
 
 
 

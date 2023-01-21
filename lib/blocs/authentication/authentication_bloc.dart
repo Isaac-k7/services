@@ -78,6 +78,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
     try {
       final String? registerError = await _authenticationRepository.register(
+        username: event.username,
+        email: event.email,
         firstName: event.firstName,
         lastName: event.lastName,
         phone: event.phone,

@@ -95,6 +95,8 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
     {required String firstName,
     required String lastName,
     required String phone,
+    required String username,
+    required String email,
     required String password,}
   ) async {
 
@@ -106,24 +108,24 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
     String errorRole = '';
     provider = AuthenticationProvider.service;
     final response = await Api.post(
-      'oauth/register',
+      'users/',
       headers: {
         'X-Requested-With': 'XMLHttpRequest',
         'Accept-Language': 'fr',
         'Content-Type': 'application/json; charset=UTF-8'
       },
       body: {
+        'username': username.trim(),
         'phone': phone.trim(),
         'first_name': firstName.trim(),
         'last_name': lastName.trim(),
         'password': password.trim(),
-        'role_slug': 'student'
+        'email': email.trim()
       },
     );
-
-    if (response.statusCode == HttpStatus.ok) {
+    if (response.statusCode == HttpStatus.created) {
       ApiSuccess success = ApiSuccess(response);
-      await _storeTokenInfo(success.data['access_token']);
+      await _storeTokenInfo(success.data['token']);
       if (_token != null) {
         return null;
       }

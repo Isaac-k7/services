@@ -47,7 +47,7 @@ class FormRegister extends StatelessWidget {
                     controller: userName,
                     labelText: t.userName,
                     textCapitalization: TextCapitalization.none,
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.text,
                     icon: userName.text != '' ? null : Icons.close,
                     validator: (value) =>
                         LoginController.validateUserName(value, context),
@@ -98,8 +98,8 @@ class FormRegister extends StatelessWidget {
                                 AuthenticationState>(
                               builder: (context, authState) {
                                 return CustomElevatedButton(
-                                  // disabled:
-                                  //     (loginState.phone == '' || loginState.password == ''),
+                                  disabled:
+                                      (loginState.phone == '' || loginState.password == ''),
                                   loading:
                                       authState is AuthenticationStateLoading,
                                   label: Text(t.login,

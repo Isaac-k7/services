@@ -3,6 +3,8 @@ part of 'register_cubit.dart';
 enum RegisterStatus { initial, submitting, success }
 
 class RegisterState extends Equatable {
+  final String username;
+  final String email;
   final String phone;
   final String firstName;
   final String lastName;
@@ -10,6 +12,8 @@ class RegisterState extends Equatable {
   final RegisterStatus status;
 
   const RegisterState({
+    required this.username,
+    required this.email,
     required this.phone,
     required this.firstName,
     required this.lastName,
@@ -19,6 +23,8 @@ class RegisterState extends Equatable {
 
   factory RegisterState.initial() {
     return const RegisterState(
+      username: '',
+      email: '',
       phone: '',
       firstName: '',
       lastName: '',
@@ -28,6 +34,8 @@ class RegisterState extends Equatable {
   }
 
   RegisterState copyWith({
+    String? username,
+    String? email,
     String? phone,
     String? firstName,
     String? lastName,
@@ -35,6 +43,8 @@ class RegisterState extends Equatable {
     RegisterStatus? status,
   }) {
     return RegisterState(
+        username: phone ?? this.username,
+        email: phone ?? this.email,
         phone: phone ?? this.phone,
         firstName: firstName ?? this.firstName,
         lastName: lastName ?? this.lastName,
@@ -43,5 +53,12 @@ class RegisterState extends Equatable {
   }
 
   @override
-  List<Object> get props => [phone, firstName, lastName,password];
+  List<Object> get props => [
+        username,
+        email,
+        phone,
+        firstName,
+        lastName,
+        password,
+      ];
 }

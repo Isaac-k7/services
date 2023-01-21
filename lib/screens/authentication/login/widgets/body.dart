@@ -11,31 +11,30 @@ class Body extends StatelessWidget {
     AppLocalizations? t = AppLocalizations.of(context)!;
     return SafeArea(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
         children: [
           Expanded(
             flex: 1,
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                t.login,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  // fontFamily: 'Rubik',
+            child: Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Text(
+                  t.login,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    // fontFamily: 'Rubik',
+                  ),
                 ),
               ),
             ),
           ),
+
           const Expanded(
-            flex: 3,
-            child: SizedBox(
-            ),
-          ),
-          
-          const Expanded(
-            flex: 3,
+            flex: 1,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: FormRegister(),

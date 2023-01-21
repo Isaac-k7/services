@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
           return current is AuthenticationStateUnauthenticated;
         },
         listener: (context, state) {
-          Controller.navigateToWelcome();
+          Controller.navigateToWelcome(context);
         },
         builder: (context, state) {
           if (state is AuthenticationStateAuthenticated) {
@@ -37,7 +37,7 @@ class Body extends StatelessWidget {
           return Center(
             child: CustomElevatedButton(
               onPressed: () {
-                Controller.navigateToWelcome();
+                Controller.navigateToWelcome(context);
               },
               label: Text(t.login),
             ),

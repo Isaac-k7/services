@@ -8,17 +8,18 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppLocalizations? t = AppLocalizations.of(context);
+    AppLocalizations? t = AppLocalizations.of(context)!;
     return SafeArea(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Expanded(
-            flex: 1,
+          Padding(
+            padding: const EdgeInsets.only(top: 50),
             child: Align(
-              alignment: Alignment.center,
+              alignment: Alignment.topCenter,
               child: Text(
-                t!.createAnAccount,
+                t.createAnAccount,
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -28,13 +29,21 @@ class Body extends StatelessWidget {
               ),
             ),
           ),
-           const Expanded(
-            flex: 4,
-            child:  Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: FormRegister(),
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: const [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
+                  child: FormRegister(),
+                ),
+              ],
             ),
           ),
+          
         ],
       ),
     );
