@@ -1,3 +1,4 @@
+import 'package:achilleservice/config/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -9,13 +10,12 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations? t = AppLocalizations.of(context)!;
-    return SafeArea(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Expanded(
-            flex: 1,
+    Size mediaSize = MediaQuery.of(context).size;
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: mediaSize.height * .3,
             child: Padding(
               padding: const EdgeInsets.only(top: 50),
               child: Align(
@@ -32,16 +32,17 @@ class Body extends StatelessWidget {
               ),
             ),
           ),
-
-          const Expanded(
-            flex: 1,
-            child: Padding(
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: mediaSize.height * .6,
+            child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: FormRegister(),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

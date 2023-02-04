@@ -8,8 +8,10 @@ export 'package:achilleservice/screens/settings/screen.dart';
 export 'package:achilleservice/screens/notifications/screen.dart';
 export 'package:achilleservice/screens/profile/screen.dart';
 export 'package:achilleservice/screens/home_tabs/screen.dart';
+export 'package:achilleservice/screens/filiere/screen.dart';
 
 class Screens{
+  static const String filiere = '/filiere';
   static const String favorites = '/favorites';
   static const String settings = '/settings';
   static const String notifications = '/notifications';
@@ -18,6 +20,5 @@ class Screens{
   static const String register = '/register';
   static const String login = '/login';
   static const String welcome = '/welcome';
-    static const String splash = '/splash';
-
+  static const String splash = '/splash';
 }

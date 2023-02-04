@@ -2,12 +2,15 @@ import 'package:achilleservice/blocs/bloc.dart';
 import 'package:achilleservice/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations t = AppLocalizations.of(context)!;
     Size mediaSize = MediaQuery.of(context).size;
     return BlocBuilder<AuthenticationBloc, AuthenticationState>(
       builder: (context, authState) {
@@ -57,7 +60,7 @@ class Body extends StatelessWidget {
                       ),
                       const SizedBox(height: 15),
                       Text(
-                        '@_${authState.user.username}',
+                        authState.user.username!,
                         style: const TextStyle(
                           fontSize: 14,
                           fontFamily: 'Rubik',
@@ -72,20 +75,20 @@ class Body extends StatelessWidget {
                             width: mediaSize.width*.49,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
-                              children: const [
+                              children: [
                                 Text(
-                                  'filière',
-                                  style: TextStyle(
+                                  t.phone,
+                                  style: const TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                     fontFamily: 'Rubik',
                                   ),
                                 ),
-                                SizedBox(height: 15),
+                                const SizedBox(height: 15),
                                 Text(
-                                  'Informatique',
-                                  style: TextStyle(
+                                  authState.user.phone??'',
+                                  style: const TextStyle(
                                     fontSize: 14,
                                     fontFamily: 'Rubik',
                                   ),
@@ -129,8 +132,8 @@ class Body extends StatelessWidget {
                           SizedBox(
                             width: mediaSize.width*.49,
                             child: Column(
-                              children: const [
-                                Text(
+                              children: [
+                                const Text(
                                   'ville',
                                   style: TextStyle(
                                     fontSize: 14,
@@ -139,10 +142,10 @@ class Body extends StatelessWidget {
                                     fontFamily: 'Rubik',
                                   ),
                                 ),
-                                SizedBox(height: 15),
+                                const SizedBox(height: 15),
                                 Text(
-                                  'Abidjan',
-                                  style: TextStyle(
+                                  authState.user.cityId??'',
+                                  style: const TextStyle(
                                     fontSize: 14,
                                     fontFamily: 'Rubik',
                                   ),

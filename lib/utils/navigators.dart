@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 class RouteController {
   /// Logs a [User] into the application
+  void filiere(context) {
+    Navigator.of(context).pushNamed('/filiere');
+  }
   void favorites(context) {
     Navigator.of(context).pushNamed('/favorites');
   }

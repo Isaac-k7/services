@@ -29,16 +29,17 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: (disabled || loading) ? null : onPressed,
       style: ElevatedButton.styleFrom(
-        primary: backgroundColor ??
-            Theme.of(context).colorScheme.primary, // Background fill color
-        onPrimary: color ??
+        foregroundColor: color ??
             Theme.of(context)
                 .colorScheme
-                .onPrimary, // Text and Icons colors + Overlay color for hover, focus, and pressed states
-        onSurface: backgroundColor ??
+                .onPrimary, backgroundColor: backgroundColor ??
+            Theme.of(context).colorScheme.primary, disabledForegroundColor: backgroundColor ??
             Theme.of(context)
                 .colorScheme
-                .onSurface, // Disabled text, icon, and fill color
+                .onSurface.withOpacity(0.38), disabledBackgroundColor: backgroundColor ??
+            Theme.of(context)
+                .colorScheme
+                .onSurface.withOpacity(0.12), // Disabled text, icon, and fill color
       ),
       child: loading
           ? SizedBox(

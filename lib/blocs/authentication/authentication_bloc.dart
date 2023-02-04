@@ -96,7 +96,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       }
       emit(AuthenticationStateUnauthenticated(errorMessage: registerError));
     } catch (e) {
-      emit(const AuthenticationStateUnauthenticated());
+      emit(AuthenticationStateUnauthenticated(errorMessage: e.toString()));
     }
   }
 }

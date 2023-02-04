@@ -10,6 +10,8 @@ class MyRouter{
 
   Route<dynamic>?  getRoute(RouteSettings settings){
     switch (settings.name){
+      case Screens.filiere:
+        return _buildRoute(settings, const Filiere());
       case Screens.favorites:
       case Screens.settings:
       case Screens.profile:

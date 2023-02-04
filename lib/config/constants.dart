@@ -5,6 +5,8 @@ import 'theme/text_theme.dart';
 class AppColors {
   static const Color kPrimaryColor = Color.fromARGB(255, 196, 19, 49);
   static const Color kPrimaryVariant = Color.fromARGB(255, 255, 131, 152);
+  static const Color kWhiteColor = Colors.white;
+  static Color kGreyColor = Colors.grey.shade400;
   static const Color kSecondaryColor = Colors.black12;
   static const Color kSecondaryColorVariant =
       Color.fromARGB(255, 255, 116, 139);

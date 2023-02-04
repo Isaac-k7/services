@@ -28,12 +28,10 @@ class CustomOutlinedButton extends StatelessWidget {
     return OutlinedButton(
       onPressed: (disabled || loading) ? null : onPressed,
       style: OutlinedButton.styleFrom(
-        primary:
-            primaryColor, // Text and Icons colors + Overlay color for hover, focus, and pressed states
-        onSurface: color ??
+        foregroundColor: primaryColor, disabledForegroundColor: color ??
             Theme.of(context)
                 .colorScheme
-                .onSurface, // Disabled text, icon, and fill color
+                .onSurface.withOpacity(0.38), // Disabled text, icon, and fill color
       ).copyWith(
         side: MaterialStateBorderSide.resolveWith((Set<MaterialState> states) {
           return BorderSide(
